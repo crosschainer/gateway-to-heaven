@@ -1068,7 +1068,6 @@ function exchangeBNBtoTAU(){
     if(use_metamask == false){
         let WBNBAddress ="0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c";
         let TAUAddress = "0x70d7109d3afe13ee8f9015566272838519578c6b";
-        let privateKey = Buffer.from(non_metamask_account.privateKey.slice(2), 'hex')  ;
         let contract = new window.web3.eth.Contract(pancakeswap_abi, pancakeswap_router, {from: address});
         let data = contract.methods.swapExactETHForTokens(
             window.web3.utils.toHex(balanceChange),
@@ -1089,9 +1088,21 @@ function exchangeBNBtoTAU(){
             "nonce":window.web3.utils.toHex(count)
         };
 
-        let transaction = new Tx(rawTransaction, { 'common': BSC_FORK });
-        transaction.sign(privateKey);
-        let result = await window.web3.eth.sendSignedTransaction('0x' + transaction.serialize().toString('hex'));
+        var signedTx = await non_metamask_account.signTransaction(rawTransaction)
+
+        window.web3.eth.sendSignedTransaction(signedTx.rawTransaction)
+        .on('transactionHash', function(hash){
+
+        })
+        .on('confirmation', function(confirmationNumber, receipt){
+
+        })
+        .on('receipt', function(receipt){
+
+        })
+        .on('error', function(error, receipt) { // If the transaction was rejected by the network with a receipt, the second parameter will be the receipt.
+            console.error("Error:", error, "Receipt:", receipt)
+        });
     }
     bridgeTAUtoLamden()
     
