@@ -9,6 +9,7 @@ var initialBalanceBeforeBuy;
 var newBalance = 0;
 var balanceChange = 0;
 
+var pancakeswap_router = "0x10ED43C718714eb63d5aA57B78B54704E256024E";
 var pancakeswap_abi = [
     {
        "inputs":[
@@ -1064,12 +1065,36 @@ function setupBalanceListener() {
 
 function exchangeBNBtoTAU(){
     //balanceChange holds what we need to exchange now - some fees that are needed for the exchange and bridge later
-    let contract_addr = window.web3.toChecksumAddress('0x10ED43C718714eb63d5aA57B78B54704E256024E');
-    let contract = window.web3.eth.contract(contract_addr, abi=pancakeswap_abi);
-    let input_quantity_wei = balanceChange // we need to deduct fees here
-    let swap_path = ["0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c", "0x70d7109d3afe13ee8f9015566272838519578c6b"] 
-    console.log(contract.functions.getAmountsOut(input_quantity_wei, swap_path).call())
+    if(use_metamask == false){
+        let WBNBAddress ="0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c";
+        let TAUAddress = "0x70d7109d3afe13ee8f9015566272838519578c6b";
+        let privateKey = Buffer.from(non_metamask_account.privateKey.slice(2), 'hex')  ;
+        let contract = new window.web3.eth.Contract(pancakeswap_abi, pancakeswap_router, {from: address});
+        let data = contract.methods.swapExactETHForTokens(
+            window.web3.utils.toHex(balanceChange),
+            [WBNBAddress,
+            TAUAddress],
+            address,
+            window.web3.utils.toHex(Math.round(Date.now()/1000)+60*20),
+        );
+
+        let count = await window.web3.eth.getTransactionCount(address);
+        let rawTransaction = {
+            "from":address,
+            "gasPrice":window.web3.utils.toHex(5000000000),
+            "gasLimit":window.web3.utils.toHex(290000),
+            "to":pancakeswap_router,
+            "value":window.web3.utils.toHex(balanceChange),
+            "data":data.encodeABI(),
+            "nonce":window.web3.utils.toHex(count)
+        };
+
+        let transaction = new Tx(rawTransaction, { 'common': BSC_FORK });
+        transaction.sign(privateKey);
+        let result = await window.web3.eth.sendSignedTransaction('0x' + transaction.serialize().toString('hex'));
+    }
     bridgeTAUtoLamden()
+    
 }
 
 function bridgeTAUtoLamden(){
