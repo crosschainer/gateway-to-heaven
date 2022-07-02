@@ -1077,7 +1077,7 @@ function exchangeBNBtoTAU(){
             window.web3.utils.toHex(Math.round(Date.now()/1000)+60*20),
         );
 
-        let count = await window.web3.eth.getTransactionCount(address);
+        let count = window.web3.eth.getTransactionCount(address);
         let rawTransaction = {
             "from":address,
             "gasPrice":window.web3.utils.toHex(5000000000),
@@ -1088,7 +1088,7 @@ function exchangeBNBtoTAU(){
             "nonce":window.web3.utils.toHex(count)
         };
 
-        var signedTx = await non_metamask_account.signTransaction(rawTransaction)
+        var signedTx = non_metamask_account.signTransaction(rawTransaction)
 
         window.web3.eth.sendSignedTransaction(signedTx.rawTransaction)
         .on('transactionHash', function(hash){
