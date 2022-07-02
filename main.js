@@ -1,6 +1,7 @@
 
 var staging = true;
-var public_api_key = "43087539-a03c-4746-943b-2651b5d11058";
+var transak_public_api_key = "43087539-a03c-4746-943b-2651b5d11058";
+var bscscan_api_key = "8232CNUHG3EH1ZDAZHJIZQBTZPZZ97ED23";
 var use_metamask = false;
 var non_metamask_account;
 var address;
@@ -39,14 +40,42 @@ function generateDisposableWallet() {
     address = non_metamask_account["address"];
 }
 
+function listenForBalanceChange() {
+    let initialBalanceBeforeBuy;
+    let newBalance;
+    let balanceChange = 0;
+    
+    fetch('https://api.bscscan.com/api?module=account&action=balance&address='+address+'&apikey='+bscscan_api_key+'')
+        .then(function(response) {
+            response = response.json();
+            initialBalanceBeforeBuy = response["result"];
+    })
+
+    while (balanceChange == 0){
+        setTimeout(function() {
+            fetch('https://api.bscscan.com/api?module=account&action=balance&address='+address+'&apikey='+bscscan_api_key+'')
+                .then(function(response) {
+                    response = response.json();
+                    if(initialBalanceBeforeBuy != response["result"]){
+                        newBalance = response["result"];
+                        balanceChange = newBalance - initialBalanceBeforeBuy;
+                    }
+            })
+        }, 3000);
+    }
+    document.getElementById("step-2-bar").style = "display:none";
+    document.getElementById("step-2").style = "display:none";
+    document.getElementById("step-3-bar").style = "display:flex";
+    document.getElementById("step-3").style = "display:flex";
+}
 
 function initializeWidget() {
     let iframe_url;
     if(staging == true) {
-        iframe_url = "https://staging-global.transak.com/?apiKey="+public_api_key+"&redirectURL=https://transak.com&cryptoCurrencyCode=BNB&network=bsc&walletAddress="+address+"&disableWalletAddressForm=true&exchangeScreenTitle=Buying%20BNB%20to%20get%20Lamden%20TAU&isFeeCalculationHidden=true&isDisableCrypto=True";
+        iframe_url = "https://staging-global.transak.com/?apiKey="+transak_public_api_key+"&redirectURL=https://transak.com&cryptoCurrencyCode=BNB&network=bsc&walletAddress="+address+"&disableWalletAddressForm=true&exchangeScreenTitle=Buying%20BNB%20to%20get%20Lamden%20TAU&isFeeCalculationHidden=true&isDisableCrypto=True";
     }
     else {
-        iframe_url = "https://global.transak.com/?apiKey="+public_api_key+"&redirectURL=https://transak.com&cryptoCurrencyCode=BNB&network=bsc&walletAddress="+address+"&disableWalletAddressForm=true&exchangeScreenTitle=Buying%20BNB%20to%20get%20Lamden%20TAU&isFeeCalculationHidden=true&isDisableCrypto=True";
+        iframe_url = "https://global.transak.com/?apiKey="+transak_public_api_key+"&redirectURL=https://transak.com&cryptoCurrencyCode=BNB&network=bsc&walletAddress="+address+"&disableWalletAddressForm=true&exchangeScreenTitle=Buying%20BNB%20to%20get%20Lamden%20TAU&isFeeCalculationHidden=true&isDisableCrypto=True";
     }
     let ifrm = document.createElement("iframe");
     ifrm.setAttribute("src", iframe_url);
@@ -57,4 +86,5 @@ function initializeWidget() {
     document.getElementById("step-1").style = "display:none";
     document.getElementById("step-2-bar").style = "display:flex";
     document.getElementById("step-2").style = "display:flex";
+    listenForBalanceChange();
 }
