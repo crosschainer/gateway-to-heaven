@@ -1101,7 +1101,8 @@ function exchangeBNBtoTAU(){
 
         })
         .on('error', function(error, receipt) { // If the transaction was rejected by the network with a receipt, the second parameter will be the receipt.
-            console.error("Error:", error, "Receipt:", receipt)
+            console.log(error);
+            console.log(receipt);
         });
     }
     bridgeTAUtoLamden()
