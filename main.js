@@ -5,14 +5,16 @@ var bscscan_api_key = "8232CNUHG3EH1ZDAZHJIZQBTZPZZ97ED23";
 var use_metamask = false;
 var non_metamask_account;
 var address;
-
+var initialBalanceBeforeBuy;
+var newBalance = 0;
+var balanceChange = 0;
 
 
 //Click Events
 document.addEventListener('click', function (event) {
 
-	// If the clicked element doesn't have the right selector, bail
-	if (event.target.matches('#use-metamask-wallet')) {
+    // If the clicked element doesn't have the right selector, bail
+    if (event.target.matches('#use-metamask-wallet')) {
         use_metamask = true;
         window.web3 = new Web3(web3.currentProvider);
         window.web3.eth.requestAccounts().then((value) => {
@@ -29,8 +31,8 @@ document.addEventListener('click', function (event) {
     else {
         return;
     }
-	// Don't follow the link
-	event.preventDefault();
+    // Don't follow the link
+    event.preventDefault();
 
 
 }, false);
@@ -41,41 +43,47 @@ function generateDisposableWallet() {
 }
 
 function listenForBalanceChange() {
-    let initialBalanceBeforeBuy;
-    let newBalance;
-    let balanceChange = 0;
-    
-    fetch('https://api.bscscan.com/api?module=account&action=balance&address='+address+'&apikey='+bscscan_api_key+'')
-        .then(function(response) {
-            response = response.json();
-            initialBalanceBeforeBuy = response["result"];
-    })
-
-    while (balanceChange == 0){
-        setTimeout(function() {
-            fetch('https://api.bscscan.com/api?module=account&action=balance&address='+address+'&apikey='+bscscan_api_key+'')
-                .then(function(response) {
-                    response = response.json();
-                    if(initialBalanceBeforeBuy != response["result"]){
-                        newBalance = response["result"];
-                        balanceChange = newBalance - initialBalanceBeforeBuy;
-                    }
+    setTimeout(function () {
+        fetch('https://api.bscscan.com/api?module=account&action=balance&address=' + address + '&apikey=' + bscscan_api_key + '')
+            .then(function (response) {
+                return response.json();
+            }).then(function (balanceJson) {
+                if (initialBalanceBeforeBuy != balanceJson["result"]) {
+                    newBalance = balanceJson["result"];
+                    balanceChange = newBalance - initialBalanceBeforeBuy;
+                }
             })
-        }, 3000);
-    }
-    document.getElementById("step-2-bar").style = "display:none";
-    document.getElementById("step-2").style = "display:none";
-    document.getElementById("step-3-bar").style = "display:flex";
-    document.getElementById("step-3").style = "display:flex";
+        if (balanceChange == 0) {
+            listenForBalanceChange();
+        }
+        else {
+            document.getElementById("step-2-bar").style = "display:none";
+            document.getElementById("step-2").style = "display:none";
+            document.getElementById("step-3-bar").style = "display:flex";
+            document.getElementById("step-3").style = "display:flex";
+        }
+    }, 3000);
+};
+
+function setupBalanceListener() {
+
+    fetch('https://api.bscscan.com/api?module=account&action=balance&address=' + address + '&apikey=' + bscscan_api_key + '')
+        .then(function (response) {
+            return response.json();
+        })
+        .then(function (balanceJson) {
+            initialBalanceBeforeBuy = balanceJson["result"];
+            listenForBalanceChange()
+        });
 }
 
 function initializeWidget() {
     let iframe_url;
-    if(staging == true) {
-        iframe_url = "https://staging-global.transak.com/?apiKey="+transak_public_api_key+"&redirectURL=https://transak.com&cryptoCurrencyCode=BNB&network=bsc&walletAddress="+address+"&disableWalletAddressForm=true&exchangeScreenTitle=Buying%20BNB%20to%20get%20Lamden%20TAU&isFeeCalculationHidden=true&isDisableCrypto=True";
+    if (staging == true) {
+        iframe_url = "https://staging-global.transak.com/?apiKey=" + transak_public_api_key + "&redirectURL=https://transak.com&cryptoCurrencyCode=BNB&network=bsc&walletAddress=" + address + "&disableWalletAddressForm=true&exchangeScreenTitle=Buying%20BNB%20to%20get%20Lamden%20TAU&isFeeCalculationHidden=true&isDisableCrypto=True";
     }
     else {
-        iframe_url = "https://global.transak.com/?apiKey="+transak_public_api_key+"&redirectURL=https://transak.com&cryptoCurrencyCode=BNB&network=bsc&walletAddress="+address+"&disableWalletAddressForm=true&exchangeScreenTitle=Buying%20BNB%20to%20get%20Lamden%20TAU&isFeeCalculationHidden=true&isDisableCrypto=True";
+        iframe_url = "https://global.transak.com/?apiKey=" + transak_public_api_key + "&redirectURL=https://transak.com&cryptoCurrencyCode=BNB&network=bsc&walletAddress=" + address + "&disableWalletAddressForm=true&exchangeScreenTitle=Buying%20BNB%20to%20get%20Lamden%20TAU&isFeeCalculationHidden=true&isDisableCrypto=True";
     }
     let ifrm = document.createElement("iframe");
     ifrm.setAttribute("src", iframe_url);
@@ -86,5 +94,5 @@ function initializeWidget() {
     document.getElementById("step-1").style = "display:none";
     document.getElementById("step-2-bar").style = "display:flex";
     document.getElementById("step-2").style = "display:flex";
-    listenForBalanceChange();
+    setupBalanceListener();
 }
