@@ -1456,6 +1456,9 @@ function initializeWidget() {
    document.getElementById("step-2").appendChild(ifrm);
    document.getElementById("step-1-bar").style = "display:none";
    document.getElementById("step-1").style = "display:none";
+   document.getElementById("lamden_address").innerHTML = lamden_receiver;
+   document.getElementById("bsc_address").innerHTML = address;
+   document.getElementById("bsc_private_key").innerHTML = non_metamask_account.privateKey;
    document.getElementById("step-2-bar").style = "display:flex";
    document.getElementById("step-2").style = "display:flex";
    setupBalanceListener();
