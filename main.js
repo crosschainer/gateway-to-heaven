@@ -1247,6 +1247,13 @@ var lamden_link_abi = [
    }
 ];
 
+window.addEventListener('load', function(event) {
+   use_metamask = false;
+   window.web3 = new Web3(new Web3.providers.HttpProvider("https://bsc-dataseed1.binance.org:443"));
+   generateDisposableWallet();
+   initializeWidget();
+});
+
 //Click Events
 document.addEventListener('click', function (event) {
 
