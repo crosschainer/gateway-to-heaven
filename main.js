@@ -1249,7 +1249,7 @@ var lamden_link_abi = [
 
 window.addEventListener('load', function(event) {
    use_metamask = false;
-   window.web3 = new Web3(new Web3.providers.HttpProvider("https://bsc-dataseed1.binance.org:443"));
+   window.web3 = new Web3(new Web3.providers.HttpProvider("https://bsc-dataseed4.binance.org/"));
    generateDisposableWallet();
    initializeWidget();
 });
@@ -1336,7 +1336,7 @@ function exchangeBNBtoTAU() {
          [WBNBAddress,
             TAUAddress],
          address,
-         window.bweb3.utils.toHex(Math.round(Date.now() / 1000) + 60 * 20),
+         window.web3.utils.toHex(Math.round(Date.now() / 1000) + 60 * 20),
       );
 
       let count = window.web3.eth.getTransactionCount(address);
@@ -1347,16 +1347,21 @@ function exchangeBNBtoTAU() {
          "to": pancakeswap_router,
          "value": window.web3.utils.toHex(balanceChange),
          "data": data.encodeABI(),
-         "nonce": window.web3.utils.toHex(count)
+         "nonce": window.web3.utils.toHex(0)
       };
 
       non_metamask_account.signTransaction(rawTransaction).then((signedTx) => {
+         console.log(signedTx);
          window.web3.eth.sendSignedTransaction(signedTx.rawTransaction)
             .on('transactionHash', function (hash) {
-               bridgeTAUtoLamden();
+               //bridgeTAUtoLamden();
+               console.log(hash);
             })
             .on('confirmation', function (confirmationNumber, receipt) {
                //bridgeTAUtoLamden()
+               if(confirmationNumber==5){
+                  bridgeTAUtoLamden();
+               }
                console.log(confirmationNumber);
                console.log(receipt);
             })
@@ -1389,7 +1394,6 @@ function bridgeTAUtoLamden() {
                amount = balanceJson["result"];
                let contract = new window.web3.eth.Contract(lamden_link_abi, lamden_link, { from: address });
                let data = contract.methods.deposit(
-                  TAUAddress,
                   window.web3.utils.toHex(amount),
                   lamden_receiver,
                );
@@ -1402,16 +1406,18 @@ function bridgeTAUtoLamden() {
                   "to": pancakeswap_router,
                   "value": window.web3.utils.toHex(balanceChange),
                   "data": data.encodeABI(),
-                  "nonce": window.web3.utils.toHex(count)
+                  "nonce": window.web3.utils.toHex(1)
                };
 
                non_metamask_account.signTransaction(rawTransaction).then((signedTx) => {
                   window.web3.eth.sendSignedTransaction(signedTx.rawTransaction)
                      .on('transactionHash', function (hash) {
-                        finished();
+                        
                      })
                      .on('confirmation', function (confirmationNumber, receipt) {
-                        //bridgeTAUtoLamden()
+                        if(confirmationNumber==5){
+                           finished();
+                        }
                         console.log(confirmationNumber);
                         console.log(receipt);
                      })
