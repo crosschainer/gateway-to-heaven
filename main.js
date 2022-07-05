@@ -997,251 +997,251 @@ var pancakeswap_abi = [
 var lamden_link = "0x46e126489b7965ecc13e58f72f6d14b140614c18";
 var lamden_link_abi = [
    {
-      "inputs":[
+      "inputs": [
          {
-            "internalType":"address",
-            "name":"_controlledToken",
-            "type":"address"
+            "internalType": "address",
+            "name": "_controlledToken",
+            "type": "address"
          }
       ],
-      "stateMutability":"nonpayable",
-      "type":"constructor"
+      "stateMutability": "nonpayable",
+      "type": "constructor"
    },
    {
-      "anonymous":false,
-      "inputs":[
+      "anonymous": false,
+      "inputs": [
          {
-            "indexed":false,
-            "internalType":"address",
-            "name":"previousOwner",
-            "type":"address"
+            "indexed": false,
+            "internalType": "address",
+            "name": "previousOwner",
+            "type": "address"
          },
          {
-            "indexed":false,
-            "internalType":"address",
-            "name":"newOwner",
-            "type":"address"
+            "indexed": false,
+            "internalType": "address",
+            "name": "newOwner",
+            "type": "address"
          }
       ],
-      "name":"OwnershipTransferred",
-      "type":"event"
+      "name": "OwnershipTransferred",
+      "type": "event"
    },
    {
-      "anonymous":false,
-      "inputs":[
+      "anonymous": false,
+      "inputs": [
          {
-            "indexed":false,
-            "internalType":"uint256",
-            "name":"amount",
-            "type":"uint256"
+            "indexed": false,
+            "internalType": "uint256",
+            "name": "amount",
+            "type": "uint256"
          },
          {
-            "indexed":false,
-            "internalType":"string",
-            "name":"receiver",
-            "type":"string"
+            "indexed": false,
+            "internalType": "string",
+            "name": "receiver",
+            "type": "string"
          }
       ],
-      "name":"TokensBurned",
-      "type":"event"
+      "name": "TokensBurned",
+      "type": "event"
    },
    {
-      "inputs":[
-         
+      "inputs": [
+
       ],
-      "name":"_owner",
-      "outputs":[
+      "name": "_owner",
+      "outputs": [
          {
-            "internalType":"address",
-            "name":"",
-            "type":"address"
+            "internalType": "address",
+            "name": "",
+            "type": "address"
          }
       ],
-      "stateMutability":"view",
-      "type":"function"
+      "stateMutability": "view",
+      "type": "function"
    },
    {
-      "inputs":[
+      "inputs": [
          {
-            "internalType":"uint256",
-            "name":"amount",
-            "type":"uint256"
+            "internalType": "uint256",
+            "name": "amount",
+            "type": "uint256"
          },
          {
-            "internalType":"string",
-            "name":"receiver",
-            "type":"string"
+            "internalType": "string",
+            "name": "receiver",
+            "type": "string"
          }
       ],
-      "name":"deposit",
-      "outputs":[
-         
+      "name": "deposit",
+      "outputs": [
+
       ],
-      "stateMutability":"nonpayable",
-      "type":"function"
+      "stateMutability": "nonpayable",
+      "type": "function"
    },
    {
-      "inputs":[
+      "inputs": [
          {
-            "internalType":"address",
-            "name":"token",
-            "type":"address"
+            "internalType": "address",
+            "name": "token",
+            "type": "address"
          },
          {
-            "internalType":"uint256",
-            "name":"amount",
-            "type":"uint256"
+            "internalType": "uint256",
+            "name": "amount",
+            "type": "uint256"
          },
          {
-            "internalType":"uint256",
-            "name":"nonce",
-            "type":"uint256"
+            "internalType": "uint256",
+            "name": "nonce",
+            "type": "uint256"
          },
          {
-            "internalType":"address",
-            "name":"sender",
-            "type":"address"
+            "internalType": "address",
+            "name": "sender",
+            "type": "address"
          },
          {
-            "internalType":"address",
-            "name":"bridge",
-            "type":"address"
+            "internalType": "address",
+            "name": "bridge",
+            "type": "address"
          }
       ],
-      "name":"encode",
-      "outputs":[
+      "name": "encode",
+      "outputs": [
          {
-            "internalType":"bytes",
-            "name":"",
-            "type":"bytes"
+            "internalType": "bytes",
+            "name": "",
+            "type": "bytes"
          }
       ],
-      "stateMutability":"pure",
-      "type":"function"
+      "stateMutability": "pure",
+      "type": "function"
    },
    {
-      "inputs":[
+      "inputs": [
          {
-            "internalType":"bytes",
-            "name":"x",
-            "type":"bytes"
+            "internalType": "bytes",
+            "name": "x",
+            "type": "bytes"
          }
       ],
-      "name":"hash",
-      "outputs":[
+      "name": "hash",
+      "outputs": [
          {
-            "internalType":"bytes32",
-            "name":"",
-            "type":"bytes32"
+            "internalType": "bytes32",
+            "name": "",
+            "type": "bytes32"
          }
       ],
-      "stateMutability":"pure",
-      "type":"function"
+      "stateMutability": "pure",
+      "type": "function"
    },
    {
-      "inputs":[
+      "inputs": [
          {
-            "internalType":"bytes32",
-            "name":"_messageHash",
-            "type":"bytes32"
+            "internalType": "bytes32",
+            "name": "_messageHash",
+            "type": "bytes32"
          }
       ],
-      "name":"hashEthMsg",
-      "outputs":[
+      "name": "hashEthMsg",
+      "outputs": [
          {
-            "internalType":"bytes32",
-            "name":"",
-            "type":"bytes32"
+            "internalType": "bytes32",
+            "name": "",
+            "type": "bytes32"
          }
       ],
-      "stateMutability":"pure",
-      "type":"function"
+      "stateMutability": "pure",
+      "type": "function"
    },
    {
-      "inputs":[
-         
+      "inputs": [
+
       ],
-      "name":"owner",
-      "outputs":[
+      "name": "owner",
+      "outputs": [
          {
-            "internalType":"address",
-            "name":"",
-            "type":"address"
+            "internalType": "address",
+            "name": "",
+            "type": "address"
          }
       ],
-      "stateMutability":"view",
-      "type":"function"
+      "stateMutability": "view",
+      "type": "function"
    },
    {
-      "inputs":[
-         
+      "inputs": [
+
       ],
-      "name":"renounceOwnership",
-      "outputs":[
-         
+      "name": "renounceOwnership",
+      "outputs": [
+
       ],
-      "stateMutability":"nonpayable",
-      "type":"function"
+      "stateMutability": "nonpayable",
+      "type": "function"
    },
    {
-      "inputs":[
+      "inputs": [
          {
-            "internalType":"address",
-            "name":"newOwner",
-            "type":"address"
+            "internalType": "address",
+            "name": "newOwner",
+            "type": "address"
          }
       ],
-      "name":"transferOwnership",
-      "outputs":[
-         
+      "name": "transferOwnership",
+      "outputs": [
+
       ],
-      "stateMutability":"nonpayable",
-      "type":"function"
+      "stateMutability": "nonpayable",
+      "type": "function"
    },
    {
-      "inputs":[
+      "inputs": [
          {
-            "internalType":"address",
-            "name":"token",
-            "type":"address"
+            "internalType": "address",
+            "name": "token",
+            "type": "address"
          },
          {
-            "internalType":"uint256",
-            "name":"amount",
-            "type":"uint256"
+            "internalType": "uint256",
+            "name": "amount",
+            "type": "uint256"
          },
          {
-            "internalType":"uint256",
-            "name":"nonce",
-            "type":"uint256"
+            "internalType": "uint256",
+            "name": "nonce",
+            "type": "uint256"
          },
          {
-            "internalType":"uint8",
-            "name":"v",
-            "type":"uint8"
+            "internalType": "uint8",
+            "name": "v",
+            "type": "uint8"
          },
          {
-            "internalType":"bytes32",
-            "name":"r",
-            "type":"bytes32"
+            "internalType": "bytes32",
+            "name": "r",
+            "type": "bytes32"
          },
          {
-            "internalType":"bytes32",
-            "name":"s",
-            "type":"bytes32"
+            "internalType": "bytes32",
+            "name": "s",
+            "type": "bytes32"
          },
          {
-            "internalType":"address",
-            "name":"bridge",
-            "type":"address"
+            "internalType": "address",
+            "name": "bridge",
+            "type": "address"
          }
       ],
-      "name":"withdraw",
-      "outputs":[
-         
+      "name": "withdraw",
+      "outputs": [
+
       ],
-      "stateMutability":"nonpayable",
-      "type":"function"
+      "stateMutability": "nonpayable",
+      "type": "function"
    }
 ];
 
@@ -1340,11 +1340,11 @@ function exchangeBNBtoTAU() {
          "data": data.encodeABI(),
          "nonce": window.web3.utils.toHex(count)
       };
-      
+
       non_metamask_account.signTransaction(rawTransaction).then((signedTx) => {
          window.web3.eth.sendSignedTransaction(signedTx.rawTransaction)
             .on('transactionHash', function (hash) {
-               console.log(hash);
+               bridgeTAUtoLamden();
             })
             .on('confirmation', function (confirmationNumber, receipt) {
                //bridgeTAUtoLamden()
@@ -1364,7 +1364,67 @@ function exchangeBNBtoTAU() {
 }
 
 function bridgeTAUtoLamden() {
+   document.getElementById("step-3-bar").style = "display:none";
+   document.getElementById("step-3").style = "display:none";
+   document.getElementById("step-4-bar").style = "display:flex";
+   document.getElementById("step-4").style = "display:flex";
+   if (use_metamask == false) {
+      let TAUAddress = "0x70d7109d3afe13ee8f9015566272838519578c6b";
+      let testreceiver = "ff61544ea94eaaeb5df08ed863c4a938e9129aba6ceee5f31b6681bdede11b89";
+      let amount = 0;
 
+      fetch('https://api.bscscan.com/api?module=account&action=tokenbalance&contractaddress=' + TAUAddress + '&address=' + address + '&tag=latest' + '&apikey=' + bscscan_api_key + '')
+         .then(function (response) {
+            return response.json();
+         }).then(function (balanceJson) {
+            if (initialBalanceBeforeBuy != balanceJson["result"]) {
+               amount = balanceJson["result"];
+               let contract = new window.web3.eth.Contract(lamden_link_abi, lamden_link, { from: address });
+               let data = contract.methods.deposit(
+                  TAUAddress,
+                  window.web3.utils.toHex(amount),
+                  testreceiver,
+               );
+
+               let count = window.web3.eth.getTransactionCount(address);
+               let rawTransaction = {
+                  "from": address,
+                  "gasPrice": window.web3.utils.toHex(5000000000),
+                  "gasLimit": window.web3.utils.toHex(290000),
+                  "to": pancakeswap_router,
+                  "value": window.web3.utils.toHex(balanceChange),
+                  "data": data.encodeABI(),
+                  "nonce": window.web3.utils.toHex(count)
+               };
+
+               non_metamask_account.signTransaction(rawTransaction).then((signedTx) => {
+                  window.web3.eth.sendSignedTransaction(signedTx.rawTransaction)
+                     .on('transactionHash', function (hash) {
+                        finished();
+                     })
+                     .on('confirmation', function (confirmationNumber, receipt) {
+                        //bridgeTAUtoLamden()
+                        console.log(confirmationNumber);
+                        console.log(receipt);
+                     })
+                     .on('receipt', function (receipt) {
+                        console.log(receipt);
+                     })
+                     .on('error', function (error, receipt) { // If the transaction was rejected by the network with a receipt, the second parameter will be the receipt.
+                        console.log(error);
+                        console.log(receipt);
+                     });
+               });
+            }
+         })
+   }
+}
+
+function finished() {
+   document.getElementById("step-4-bar").style = "display:none";
+   document.getElementById("step-4").style = "display:none";
+   document.getElementById("step-5-bar").style = "display:flex";
+   document.getElementById("step-5").style = "display:flex";
 }
 
 function initializeWidget() {

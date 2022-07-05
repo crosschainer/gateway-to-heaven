@@ -48,6 +48,20 @@
     gap: 2rem;
     width: 100%;
 }
+#step-4{
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+    width: 100%;
+}
+#step-5{
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+    width: 100%;
+}
 .spinner{
     max-height: 24px;
 }
