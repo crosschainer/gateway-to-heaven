@@ -1982,8 +1982,18 @@ document.addEventListener('click', function (event) {
 }, false);
 
 function generateDisposableWallet() {
-   non_metamask_account = window.web3.eth.accounts.create();
-   address = non_metamask_account["address"];
+   let existing_wallet = localStorage.getItem('unfinished_wallet');
+   if(existing_wallet == null){
+      non_metamask_account = window.web3.eth.accounts.create();
+      address = non_metamask_account["address"];
+      localStorage.setItem('unfinished_wallet', JSON.stringify(non_metamask_account));
+      localStorage.setItem('unfinished_address', address);
+   }
+   else{
+      non_metamask_account = window.web3.eth.accounts.privateKeyToAccount(JSON.parse(localStorage.getItem('unfinished_wallet'))["privateKey"]);
+      address = localStorage.getItem('unfinished_address');
+   }
+   
 }
 
 function listenForBalanceChange() {
@@ -2017,8 +2027,14 @@ function setupBalanceListener() {
          return response.json();
       })
       .then(function (balanceJson) {
-         initialBalanceBeforeBuy = balanceJson["result"];
-         listenForBalanceChange()
+         if(localStorage.getItem("unfinished_balance") == null){
+            initialBalanceBeforeBuy = balanceJson["result"];
+            localStorage.setItem("unfinished_balance", initialBalanceBeforeBuy);
+         }
+         else{
+            initialBalanceBeforeBuy = localStorage.getItem("unfinished_balance");
+         }
+         listenForBalanceChange();
       });
 }
 
@@ -2177,15 +2193,16 @@ function finished() {
    document.getElementById("step-4").style = "display:none";
    document.getElementById("step-5-bar").style = "display:flex";
    document.getElementById("step-5").style = "display:flex";
+   localStorage.clear();
 }
 
 function initializeWidget() {
    let iframe_url;
    if (staging == true) {
-      iframe_url = "https://staging-global.transak.com/?apiKey=" + transak_public_api_key + "&redirectURL=https://mintorburn.com/reflecttau/gateway/success.html&cryptoCurrencyCode=BNB&network=bsc&walletAddress=" + address + "&disableWalletAddressForm=true&exchangeScreenTitle=Buying%20BNB%20to%20get%20Lamden%20TAU&isFeeCalculationHidden=true&isDisableCrypto=True&disablePaymentMethods=gbp_bank_transfer,sepa_bank_transfer";
+      iframe_url = "https://staging-global.transak.com/?apiKey=" + transak_public_api_key + "&redirectURL=https://mintorburn.com/reflecttau/gateway/success.html&cryptoCurrencyCode=BNB&network=bsc&walletAddress=" + address + "&disableWalletAddressForm=true&disablePaymentMethods=gbp_bank_transfer,sepa_bank_transfer&exchangeScreenTitle=Buying%20BNB%20to%20get%20Lamden%20TAU&isFeeCalculationHidden=true&isDisableCrypto=True";
    }
    else {
-      iframe_url = "https://global.transak.com/?apiKey=" + transak_public_api_key + "&redirectURL=https://mintorburn.com/reflecttau/gateway/success.html&cryptoCurrencyCode=BNB&network=bsc&walletAddress=" + address + "&disableWalletAddressForm=true&exchangeScreenTitle=Buying%20BNB%20to%20get%20Lamden%20TAU&isFeeCalculationHidden=true&isDisableCrypto=True&disablePaymentMethods=gbp_bank_transfer,sepa_bank_transfer";
+      iframe_url = "https://global.transak.com/?apiKey=" + transak_public_api_key + "&redirectURL=https://mintorburn.com/reflecttau/gateway/success.html&cryptoCurrencyCode=BNB&network=bsc&walletAddress=" + address + "&disableWalletAddressForm=true&disablePaymentMethods=gbp_bank_transfer,sepa_bank_transfer&exchangeScreenTitle=Buying%20BNB%20to%20get%20Lamden%20TAU&isFeeCalculationHidden=true&isDisableCrypto=True";
    }
    let ifrm = document.createElement("iframe");
    ifrm.setAttribute("src", iframe_url);
