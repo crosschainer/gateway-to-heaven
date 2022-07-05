@@ -6,7 +6,6 @@ A serverless fiat onramp for Lamden
 
 It currently provides
 - Creating a disposable Wallet
-- Use your own MetaMask Wallet
 - Uses Transak to buy BNB and sends to one of the above wallets
 - Listens for Balance changes
 - Exchanges BNB for TAU on BSC and leaves some BNB for bridge gas
