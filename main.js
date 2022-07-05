@@ -1325,7 +1325,7 @@ function setupBalanceListener() {
 function exchangeBNBtoTAU() {
    //balanceChange holds what we need to exchange now - some fees that are needed for the exchange and bridge later
    let gas_for_exchange = 290000 * 5000000000;
-   let gas_for_bridge = 150000 * 5000000000;
+   let gas_for_bridge = 250000 * 5000000000;
    balanceChange = balanceChange - gas_for_bridge - gas_for_exchange;
    if (use_metamask == false) {
       let WBNBAddress = "0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c";
