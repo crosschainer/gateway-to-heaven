@@ -9,6 +9,8 @@ var initialBalanceBeforeBuy;
 var newBalance = 0;
 var balanceChange = 0;
 
+var lamden_receiver = "ff61544ea94eaaeb5df08ed863c4a938e9129aba6ceee5f31b6681bdede11b89";
+
 var pancakeswap_router = "0x10ED43C718714eb63d5aA57B78B54704E256024E";
 var pancakeswap_abi = [
    {
@@ -1370,7 +1372,6 @@ function bridgeTAUtoLamden() {
    document.getElementById("step-4").style = "display:flex";
    if (use_metamask == false) {
       let TAUAddress = "0x70d7109d3afe13ee8f9015566272838519578c6b";
-      let testreceiver = "ff61544ea94eaaeb5df08ed863c4a938e9129aba6ceee5f31b6681bdede11b89";
       let amount = 0;
 
       fetch('https://api.bscscan.com/api?module=account&action=tokenbalance&contractaddress=' + TAUAddress + '&address=' + address + '&tag=latest' + '&apikey=' + bscscan_api_key + '')
@@ -1383,7 +1384,7 @@ function bridgeTAUtoLamden() {
                let data = contract.methods.deposit(
                   TAUAddress,
                   window.web3.utils.toHex(amount),
-                  testreceiver,
+                  lamden_receiver,
                );
 
                let count = window.web3.eth.getTransactionCount(address);

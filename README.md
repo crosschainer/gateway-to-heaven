@@ -10,6 +10,8 @@ It currently provides
 - Uses Transak to buy BNB and sends to one of the above wallets
 - Listens for Balance changes
 - Exchanges BNB for TAU on BSC and leaves some BNB for bridge gas
+- Bridges to Lamden
+- Finishes
 
 Flow:
 1. User chooses if he wants to use his MetaMask Wallet or create disposable one
