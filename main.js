@@ -996,6 +996,706 @@ var pancakeswap_abi = [
    }
 ]
 
+var tau_token_abi = [
+   {
+      "inputs": [
+         {
+            "internalType": "string",
+            "name": "name",
+            "type": "string"
+         },
+         {
+            "internalType": "string",
+            "name": "symbol",
+            "type": "string"
+         }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "constructor"
+   },
+   {
+      "anonymous": false,
+      "inputs": [
+         {
+            "indexed": true,
+            "internalType": "address",
+            "name": "owner",
+            "type": "address"
+         },
+         {
+            "indexed": true,
+            "internalType": "address",
+            "name": "spender",
+            "type": "address"
+         },
+         {
+            "indexed": false,
+            "internalType": "uint256",
+            "name": "value",
+            "type": "uint256"
+         }
+      ],
+      "name": "Approval",
+      "type": "event"
+   },
+   {
+      "anonymous": false,
+      "inputs": [
+         {
+            "indexed": false,
+            "internalType": "address",
+            "name": "account",
+            "type": "address"
+         }
+      ],
+      "name": "Paused",
+      "type": "event"
+   },
+   {
+      "anonymous": false,
+      "inputs": [
+         {
+            "indexed": true,
+            "internalType": "bytes32",
+            "name": "role",
+            "type": "bytes32"
+         },
+         {
+            "indexed": true,
+            "internalType": "bytes32",
+            "name": "previousAdminRole",
+            "type": "bytes32"
+         },
+         {
+            "indexed": true,
+            "internalType": "bytes32",
+            "name": "newAdminRole",
+            "type": "bytes32"
+         }
+      ],
+      "name": "RoleAdminChanged",
+      "type": "event"
+   },
+   {
+      "anonymous": false,
+      "inputs": [
+         {
+            "indexed": true,
+            "internalType": "bytes32",
+            "name": "role",
+            "type": "bytes32"
+         },
+         {
+            "indexed": true,
+            "internalType": "address",
+            "name": "account",
+            "type": "address"
+         },
+         {
+            "indexed": true,
+            "internalType": "address",
+            "name": "sender",
+            "type": "address"
+         }
+      ],
+      "name": "RoleGranted",
+      "type": "event"
+   },
+   {
+      "anonymous": false,
+      "inputs": [
+         {
+            "indexed": true,
+            "internalType": "bytes32",
+            "name": "role",
+            "type": "bytes32"
+         },
+         {
+            "indexed": true,
+            "internalType": "address",
+            "name": "account",
+            "type": "address"
+         },
+         {
+            "indexed": true,
+            "internalType": "address",
+            "name": "sender",
+            "type": "address"
+         }
+      ],
+      "name": "RoleRevoked",
+      "type": "event"
+   },
+   {
+      "anonymous": false,
+      "inputs": [
+         {
+            "indexed": true,
+            "internalType": "address",
+            "name": "from",
+            "type": "address"
+         },
+         {
+            "indexed": true,
+            "internalType": "address",
+            "name": "to",
+            "type": "address"
+         },
+         {
+            "indexed": false,
+            "internalType": "uint256",
+            "name": "value",
+            "type": "uint256"
+         }
+      ],
+      "name": "Transfer",
+      "type": "event"
+   },
+   {
+      "anonymous": false,
+      "inputs": [
+         {
+            "indexed": false,
+            "internalType": "address",
+            "name": "account",
+            "type": "address"
+         }
+      ],
+      "name": "Unpaused",
+      "type": "event"
+   },
+   {
+      "inputs": [
+
+      ],
+      "name": "DEFAULT_ADMIN_ROLE",
+      "outputs": [
+         {
+            "internalType": "bytes32",
+            "name": "",
+            "type": "bytes32"
+         }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+   },
+   {
+      "inputs": [
+
+      ],
+      "name": "MINTER_ROLE",
+      "outputs": [
+         {
+            "internalType": "bytes32",
+            "name": "",
+            "type": "bytes32"
+         }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+   },
+   {
+      "inputs": [
+
+      ],
+      "name": "PAUSER_ROLE",
+      "outputs": [
+         {
+            "internalType": "bytes32",
+            "name": "",
+            "type": "bytes32"
+         }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+   },
+   {
+      "inputs": [
+         {
+            "internalType": "address",
+            "name": "owner",
+            "type": "address"
+         },
+         {
+            "internalType": "address",
+            "name": "spender",
+            "type": "address"
+         }
+      ],
+      "name": "allowance",
+      "outputs": [
+         {
+            "internalType": "uint256",
+            "name": "",
+            "type": "uint256"
+         }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+   },
+   {
+      "inputs": [
+         {
+            "internalType": "address",
+            "name": "spender",
+            "type": "address"
+         },
+         {
+            "internalType": "uint256",
+            "name": "amount",
+            "type": "uint256"
+         }
+      ],
+      "name": "approve",
+      "outputs": [
+         {
+            "internalType": "bool",
+            "name": "",
+            "type": "bool"
+         }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "function"
+   },
+   {
+      "inputs": [
+         {
+            "internalType": "address",
+            "name": "account",
+            "type": "address"
+         }
+      ],
+      "name": "balanceOf",
+      "outputs": [
+         {
+            "internalType": "uint256",
+            "name": "",
+            "type": "uint256"
+         }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+   },
+   {
+      "inputs": [
+         {
+            "internalType": "uint256",
+            "name": "amount",
+            "type": "uint256"
+         }
+      ],
+      "name": "burn",
+      "outputs": [
+
+      ],
+      "stateMutability": "nonpayable",
+      "type": "function"
+   },
+   {
+      "inputs": [
+         {
+            "internalType": "address",
+            "name": "account",
+            "type": "address"
+         },
+         {
+            "internalType": "uint256",
+            "name": "amount",
+            "type": "uint256"
+         }
+      ],
+      "name": "burnFrom",
+      "outputs": [
+
+      ],
+      "stateMutability": "nonpayable",
+      "type": "function"
+   },
+   {
+      "inputs": [
+
+      ],
+      "name": "decimals",
+      "outputs": [
+         {
+            "internalType": "uint8",
+            "name": "",
+            "type": "uint8"
+         }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+   },
+   {
+      "inputs": [
+         {
+            "internalType": "address",
+            "name": "spender",
+            "type": "address"
+         },
+         {
+            "internalType": "uint256",
+            "name": "subtractedValue",
+            "type": "uint256"
+         }
+      ],
+      "name": "decreaseAllowance",
+      "outputs": [
+         {
+            "internalType": "bool",
+            "name": "",
+            "type": "bool"
+         }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "function"
+   },
+   {
+      "inputs": [
+         {
+            "internalType": "bytes32",
+            "name": "role",
+            "type": "bytes32"
+         }
+      ],
+      "name": "getRoleAdmin",
+      "outputs": [
+         {
+            "internalType": "bytes32",
+            "name": "",
+            "type": "bytes32"
+         }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+   },
+   {
+      "inputs": [
+         {
+            "internalType": "bytes32",
+            "name": "role",
+            "type": "bytes32"
+         },
+         {
+            "internalType": "uint256",
+            "name": "index",
+            "type": "uint256"
+         }
+      ],
+      "name": "getRoleMember",
+      "outputs": [
+         {
+            "internalType": "address",
+            "name": "",
+            "type": "address"
+         }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+   },
+   {
+      "inputs": [
+         {
+            "internalType": "bytes32",
+            "name": "role",
+            "type": "bytes32"
+         }
+      ],
+      "name": "getRoleMemberCount",
+      "outputs": [
+         {
+            "internalType": "uint256",
+            "name": "",
+            "type": "uint256"
+         }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+   },
+   {
+      "inputs": [
+         {
+            "internalType": "bytes32",
+            "name": "role",
+            "type": "bytes32"
+         },
+         {
+            "internalType": "address",
+            "name": "account",
+            "type": "address"
+         }
+      ],
+      "name": "grantRole",
+      "outputs": [
+
+      ],
+      "stateMutability": "nonpayable",
+      "type": "function"
+   },
+   {
+      "inputs": [
+         {
+            "internalType": "bytes32",
+            "name": "role",
+            "type": "bytes32"
+         },
+         {
+            "internalType": "address",
+            "name": "account",
+            "type": "address"
+         }
+      ],
+      "name": "hasRole",
+      "outputs": [
+         {
+            "internalType": "bool",
+            "name": "",
+            "type": "bool"
+         }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+   },
+   {
+      "inputs": [
+         {
+            "internalType": "address",
+            "name": "spender",
+            "type": "address"
+         },
+         {
+            "internalType": "uint256",
+            "name": "addedValue",
+            "type": "uint256"
+         }
+      ],
+      "name": "increaseAllowance",
+      "outputs": [
+         {
+            "internalType": "bool",
+            "name": "",
+            "type": "bool"
+         }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "function"
+   },
+   {
+      "inputs": [
+         {
+            "internalType": "address",
+            "name": "to",
+            "type": "address"
+         },
+         {
+            "internalType": "uint256",
+            "name": "amount",
+            "type": "uint256"
+         }
+      ],
+      "name": "mint",
+      "outputs": [
+
+      ],
+      "stateMutability": "nonpayable",
+      "type": "function"
+   },
+   {
+      "inputs": [
+
+      ],
+      "name": "name",
+      "outputs": [
+         {
+            "internalType": "string",
+            "name": "",
+            "type": "string"
+         }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+   },
+   {
+      "inputs": [
+
+      ],
+      "name": "pause",
+      "outputs": [
+
+      ],
+      "stateMutability": "nonpayable",
+      "type": "function"
+   },
+   {
+      "inputs": [
+
+      ],
+      "name": "paused",
+      "outputs": [
+         {
+            "internalType": "bool",
+            "name": "",
+            "type": "bool"
+         }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+   },
+   {
+      "inputs": [
+         {
+            "internalType": "bytes32",
+            "name": "role",
+            "type": "bytes32"
+         },
+         {
+            "internalType": "address",
+            "name": "account",
+            "type": "address"
+         }
+      ],
+      "name": "renounceRole",
+      "outputs": [
+
+      ],
+      "stateMutability": "nonpayable",
+      "type": "function"
+   },
+   {
+      "inputs": [
+         {
+            "internalType": "bytes32",
+            "name": "role",
+            "type": "bytes32"
+         },
+         {
+            "internalType": "address",
+            "name": "account",
+            "type": "address"
+         }
+      ],
+      "name": "revokeRole",
+      "outputs": [
+
+      ],
+      "stateMutability": "nonpayable",
+      "type": "function"
+   },
+   {
+      "inputs": [
+         {
+            "internalType": "bytes4",
+            "name": "interfaceId",
+            "type": "bytes4"
+         }
+      ],
+      "name": "supportsInterface",
+      "outputs": [
+         {
+            "internalType": "bool",
+            "name": "",
+            "type": "bool"
+         }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+   },
+   {
+      "inputs": [
+
+      ],
+      "name": "symbol",
+      "outputs": [
+         {
+            "internalType": "string",
+            "name": "",
+            "type": "string"
+         }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+   },
+   {
+      "inputs": [
+
+      ],
+      "name": "totalSupply",
+      "outputs": [
+         {
+            "internalType": "uint256",
+            "name": "",
+            "type": "uint256"
+         }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+   },
+   {
+      "inputs": [
+         {
+            "internalType": "address",
+            "name": "recipient",
+            "type": "address"
+         },
+         {
+            "internalType": "uint256",
+            "name": "amount",
+            "type": "uint256"
+         }
+      ],
+      "name": "transfer",
+      "outputs": [
+         {
+            "internalType": "bool",
+            "name": "",
+            "type": "bool"
+         }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "function"
+   },
+   {
+      "inputs": [
+         {
+            "internalType": "address",
+            "name": "sender",
+            "type": "address"
+         },
+         {
+            "internalType": "address",
+            "name": "recipient",
+            "type": "address"
+         },
+         {
+            "internalType": "uint256",
+            "name": "amount",
+            "type": "uint256"
+         }
+      ],
+      "name": "transferFrom",
+      "outputs": [
+         {
+            "internalType": "bool",
+            "name": "",
+            "type": "bool"
+         }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "function"
+   },
+   {
+      "inputs": [
+
+      ],
+      "name": "unpause",
+      "outputs": [
+
+      ],
+      "stateMutability": "nonpayable",
+      "type": "function"
+   }
+];
+
 var lamden_link = "0x46e126489b7965ecc13e58f72f6d14b140614c18";
 var lamden_link_abi = [
    {
@@ -1247,7 +1947,7 @@ var lamden_link_abi = [
    }
 ];
 
-window.addEventListener('load', function(event) {
+window.addEventListener('load', function (event) {
    use_metamask = false;
    window.web3 = new Web3(new Web3.providers.HttpProvider("https://bsc-dataseed4.binance.org/"));
    generateDisposableWallet();
@@ -1325,7 +2025,7 @@ function setupBalanceListener() {
 function exchangeBNBtoTAU() {
    //balanceChange holds what we need to exchange now - some fees that are needed for the exchange and bridge later
    let gas_for_exchange = 290000 * 5000000000;
-   let gas_for_bridge = 250000 * 5000000000;
+   let gas_for_bridge = 580000 * 5000000000; //gas for approve and bridge
    balanceChange = balanceChange - gas_for_bridge - gas_for_exchange;
    if (use_metamask == false) {
       let WBNBAddress = "0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c";
@@ -1339,7 +2039,7 @@ function exchangeBNBtoTAU() {
          window.web3.utils.toHex(Math.round(Date.now() / 1000) + 60 * 20),
       );
 
-      let count = window.web3.eth.getTransactionCount(address);
+      
       let rawTransaction = {
          "from": address,
          "gasPrice": window.web3.utils.toHex(5000000000),
@@ -1359,7 +2059,7 @@ function exchangeBNBtoTAU() {
             })
             .on('confirmation', function (confirmationNumber, receipt) {
                //bridgeTAUtoLamden()
-               if(confirmationNumber==5){
+               if (confirmationNumber == 5) {
                   bridgeTAUtoLamden();
                }
                console.log(confirmationNumber);
@@ -1392,19 +2092,18 @@ function bridgeTAUtoLamden() {
          }).then(function (balanceJson) {
             if (initialBalanceBeforeBuy != balanceJson["result"]) {
                amount = balanceJson["result"];
-               let contract = new window.web3.eth.Contract(lamden_link_abi, lamden_link, { from: address });
-               let data = contract.methods.deposit(
+               document.getElementById("final_tau").innerHTML = parseFloat(Web3.utils.fromWei(balanceJson["result"], 'ether')).toFixed(8);
+               let contract = new window.web3.eth.Contract(tau_token_abi, TAUAddress, { from: address });
+               let data = contract.methods.approve(
+                  window.web3.utils.toHex(lamden_link),
                   window.web3.utils.toHex(amount),
-                  lamden_receiver,
                );
-
-               let count = window.web3.eth.getTransactionCount(address);
                let rawTransaction = {
                   "from": address,
                   "gasPrice": window.web3.utils.toHex(5000000000),
                   "gasLimit": window.web3.utils.toHex(290000),
-                  "to": pancakeswap_router,
-                  "value": window.web3.utils.toHex(balanceChange),
+                  "to": TAUAddress,
+                  "value": window.web3.utils.toHex(0),
                   "data": data.encodeABI(),
                   "nonce": window.web3.utils.toHex(1)
                };
@@ -1412,11 +2111,49 @@ function bridgeTAUtoLamden() {
                non_metamask_account.signTransaction(rawTransaction).then((signedTx) => {
                   window.web3.eth.sendSignedTransaction(signedTx.rawTransaction)
                      .on('transactionHash', function (hash) {
-                        
+
                      })
                      .on('confirmation', function (confirmationNumber, receipt) {
-                        if(confirmationNumber==5){
-                           finished();
+                        if (confirmationNumber == 5) {
+
+                           let contract = new window.web3.eth.Contract(lamden_link_abi, lamden_link, { from: address });
+                           let data = contract.methods.deposit(
+                              window.web3.utils.toHex(amount),
+                              lamden_receiver,
+                           );
+
+                           let count = window.web3.eth.getTransactionCount(address);
+                           let rawTransaction = {
+                              "from": address,
+                              "gasPrice": window.web3.utils.toHex(5000000000),
+                              "gasLimit": window.web3.utils.toHex(290000),
+                              "to": lamden_link,
+                              "value": window.web3.utils.toHex(0),
+                              "data": data.encodeABI(),
+                              "nonce": window.web3.utils.toHex(2)
+                           };
+
+                           non_metamask_account.signTransaction(rawTransaction).then((signedTx) => {
+                              window.web3.eth.sendSignedTransaction(signedTx.rawTransaction)
+                                 .on('transactionHash', function (hash) {
+
+                                 })
+                                 .on('confirmation', function (confirmationNumber, receipt) {
+                                    if (confirmationNumber == 5) {
+
+                                       finished();
+                                    }
+                                    console.log(confirmationNumber);
+                                    console.log(receipt);
+                                 })
+                                 .on('receipt', function (receipt) {
+                                    console.log(receipt);
+                                 })
+                                 .on('error', function (error, receipt) { // If the transaction was rejected by the network with a receipt, the second parameter will be the receipt.
+                                    console.log(error);
+                                    console.log(receipt);
+                                 });
+                           });
                         }
                         console.log(confirmationNumber);
                         console.log(receipt);
@@ -1429,6 +2166,7 @@ function bridgeTAUtoLamden() {
                         console.log(receipt);
                      });
                });
+
             }
          })
    }
