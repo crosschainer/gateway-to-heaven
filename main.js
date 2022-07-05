@@ -2182,10 +2182,10 @@ function finished() {
 function initializeWidget() {
    let iframe_url;
    if (staging == true) {
-      iframe_url = "https://staging-global.transak.com/?apiKey=" + transak_public_api_key + "&redirectURL=https://transak.com&cryptoCurrencyCode=BNB&network=bsc&walletAddress=" + address + "&disableWalletAddressForm=true&exchangeScreenTitle=Buying%20BNB%20to%20get%20Lamden%20TAU&isFeeCalculationHidden=true&isDisableCrypto=True";
+      iframe_url = "https://staging-global.transak.com/?apiKey=" + transak_public_api_key + "&redirectURL=https://mintorburn.com/reflecttau/gateway/success.html&cryptoCurrencyCode=BNB&network=bsc&walletAddress=" + address + "&disableWalletAddressForm=true&exchangeScreenTitle=Buying%20BNB%20to%20get%20Lamden%20TAU&isFeeCalculationHidden=true&isDisableCrypto=True";
    }
    else {
-      iframe_url = "https://global.transak.com/?apiKey=" + transak_public_api_key + "&redirectURL=https://transak.com&cryptoCurrencyCode=BNB&network=bsc&walletAddress=" + address + "&disableWalletAddressForm=true&exchangeScreenTitle=Buying%20BNB%20to%20get%20Lamden%20TAU&isFeeCalculationHidden=true&isDisableCrypto=True";
+      iframe_url = "https://global.transak.com/?apiKey=" + transak_public_api_key + "&redirectURL=https://mintorburn.com/reflecttau/gateway/success.html&cryptoCurrencyCode=BNB&network=bsc&walletAddress=" + address + "&disableWalletAddressForm=true&exchangeScreenTitle=Buying%20BNB%20to%20get%20Lamden%20TAU&isFeeCalculationHidden=true&isDisableCrypto=True";
    }
    let ifrm = document.createElement("iframe");
    ifrm.setAttribute("src", iframe_url);
