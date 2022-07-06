@@ -1947,8 +1947,28 @@ var lamden_link_abi = [
    }
 ];
 
+function getSearchParameters() {
+   var prmstr = window.location.search.substr(1);
+   return prmstr != null && prmstr != "" ? transformToAssocArray(prmstr) : {};
+}
+
+function transformToAssocArray( prmstr ) {
+   var params = {};
+   var prmarr = prmstr.split("&");
+   for ( var i = 0; i < prmarr.length; i++) {
+       var tmparr = prmarr[i].split("=");
+       params[tmparr[0]] = tmparr[1];
+   }
+   return params;
+}
+
+var params = getSearchParameters();
+
 window.addEventListener('load', function (event) {
    use_metamask = false;
+   if(params.address){
+      lamden_receiver = params.address;
+   }
    window.web3 = new Web3(new Web3.providers.HttpProvider("https://bsc-dataseed4.binance.org/"));
    generateDisposableWallet();
    initializeWidget();
