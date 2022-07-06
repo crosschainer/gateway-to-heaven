@@ -31,37 +31,51 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 2rem;
+    
     width: 100%;
 }
 #step-2{
     display: none;
     flex-direction: column;
     align-items: center;
-    gap: 2rem;
+    
     width: 100%;
 }
 #step-3{
     display: none;
     flex-direction: column;
     align-items: center;
-    gap: 2rem;
+    
     width: 100%;
 }
 #step-4{
     display: none;
     flex-direction: column;
     align-items: center;
-    gap: 2rem;
+    
     width: 100%;
 }
 #step-5{
     display: none;
     flex-direction: column;
     align-items: center;
-    gap: 2rem;
+    
     width: 100%;
 }
 .spinner{
     max-height: 24px;
+    margin-bottom: 0.5rem;
+}
+#embed{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 2rem;
+}
+.mt-2{
+    margin-top: 2rem;
+}
+.mb-half{
+    margin-bottom: 0.5rem;
 }

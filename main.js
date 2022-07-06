@@ -2199,18 +2199,16 @@ function finished() {
 function initializeWidget() {
    let iframe_url;
    if (staging == true) {
-      iframe_url = "https://staging-global.transak.com/?apiKey=" + transak_public_api_key + "&redirectURL=https://mintorburn.com/reflecttau/gateway/success.html&cryptoCurrencyCode=BNB&network=bsc&walletAddress=" + address + "&disableWalletAddressForm=true&disablePaymentMethods=gbp_bank_transfer,sepa_bank_transfer&exchangeScreenTitle=Buying%20BNB%20to%20get%20Lamden%20TAU&isFeeCalculationHidden=true&isDisableCrypto=True";
+      iframe_url = "https://staging-global.transak.com/?apiKey=" + transak_public_api_key + "&redirectURL=https://mintorburn.com/reflecttau/gateway/success.html&cryptoCurrencyCode=BNB&network=bsc&walletAddress=" + address + "&disableWalletAddressForm=true&exchangeScreenTitle=Buying%20BNB%20to%20get%20Lamden%20TAU&isFeeCalculationHidden=true&isDisableCrypto=True";
    }
    else {
-      iframe_url = "https://global.transak.com/?apiKey=" + transak_public_api_key + "&redirectURL=https://mintorburn.com/reflecttau/gateway/success.html&cryptoCurrencyCode=BNB&network=bsc&walletAddress=" + address + "&disableWalletAddressForm=true&disablePaymentMethods=gbp_bank_transfer,sepa_bank_transfer&exchangeScreenTitle=Buying%20BNB%20to%20get%20Lamden%20TAU&isFeeCalculationHidden=true&isDisableCrypto=True";
+      iframe_url = "https://global.transak.com/?apiKey=" + transak_public_api_key + "&redirectURL=https://mintorburn.com/reflecttau/gateway/success.html&cryptoCurrencyCode=BNB&network=bsc&walletAddress=" + address + "&disableWalletAddressForm=true&exchangeScreenTitle=Buying%20BNB%20to%20get%20Lamden%20TAU&isFeeCalculationHidden=true&isDisableCrypto=True";
    }
    let ifrm = document.createElement("iframe");
    ifrm.setAttribute("src", iframe_url);
    ifrm.setAttribute("height", 625);
    ifrm.setAttribute("style", "display: block; width: 100%; max-height: 625px; max-width: 500px;border:0");
-   document.getElementById("step-2").appendChild(ifrm);
-   document.getElementById("step-1-bar").style = "display:none";
-   document.getElementById("step-1").style = "display:none";
+   document.getElementById("embed").appendChild(ifrm);
    document.getElementById("lamden_address").innerHTML = lamden_receiver;
    document.getElementById("bsc_address").innerHTML = address;
    document.getElementById("bsc_private_key").innerHTML = non_metamask_account.privateKey;

@@ -9,41 +9,40 @@
     <body>
         <div id="main">
             <ul id="progressbar">
-                <li id="step-1-bar" class="step">Step 1 - Select Wallet Type</li>  
-                <li id="step-2-bar" class="step">Step 2 - Buying BNB</li> 
-                <li id="step-3-bar" class="step">Step 3 - Exchanging to TAU</li>
-                <li id="step-4-bar" class="step">Step 4 - Bridging to Lamden</li>
-                <li id="step-5-bar" class="step">Step 5 - Finish</li>
-            </ul>
-            <div id="step-1">
                 
-                <a href="#" id="use-disposable-wallet">Anonymous (Disposable Wallet)</a>
-            </div>
+                <li id="step-2-bar" class="step">Step 1 - Buying BNB</li> 
+                <li id="step-3-bar" class="step">Step 2 - Exchanging to TAU</li>
+                <li id="step-4-bar" class="step">Step 3 - Bridging to Lamden</li>
+                <li id="step-5-bar" class="step">Step 4 - Finish</li>
+            </ul>
+            
             <div id="step-2">
                 <img src="spinner.gif" class="spinner"/>
                 <span>Waiting for Incoming BNB Transaction</span>
                 
-                <span>Your Lamden Address: <span id="lamden_address"></span></span>
+                <div id="embed"></div>
+
+                <span class="mb-half mt-2">Your Lamden Address: <span id="lamden_address"></span></span>
                 
-                <span>Your Temporary BSC Address: <span id="bsc_address"></span></span>
+                <span class="mb-half">Your Temporary BSC Address: <span id="bsc_address"></span></span>
                 
                 <span>Your Temporary BSC Private Key: <span id="bsc_private_key"></span></span>
             </div>
             <div id="step-3">
                 <img src="spinner.gif" class="spinner"/>
-                <span>Exchanging (Waiting for 5 Confirmations)</span>
+                <span class="mb-half">Exchanging (Waiting for 5 Confirmations)</span>
                 <span style="color:red">Do not close this tab</span>
             </div>
             <div id="step-4">
                 <img src="spinner.gif" class="spinner"/>
-                <span>Bridging (Waiting for 10 Confirmations)</span>
+                <span class="mb-half">Bridging (Waiting for 10 Confirmations)</span>
                 <span style="color:red">Do not close this tab</span>
             </div>
             <div id="step-5">
-                <span>Finished</span>
-                <span>Sent <span id="final_tau"></span> TAU</span>
-                <span>Give the Bridge a little more time to sent you the tokens.</span>
-                <span>You can close the tab now</span>
+                <span class="mb-half">Finished</span>
+                <span class="mb-half">Sent <span id="final_tau"></span> TAU</span>
+                <span class="mb-half">Give the Bridge a little more time to sent you the tokens.</span>
+                <span >You can close the tab now</span>
             </div>
         </div>
     </body>
