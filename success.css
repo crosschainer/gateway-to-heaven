@@ -1,3 +1,6 @@
+body{
+  font-family: 'Roboto', sans-serif;
+}
 .checkmark__circle {
     stroke-dasharray: 166;
     stroke-dashoffset: 166;
