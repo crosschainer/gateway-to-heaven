@@ -1,5 +1,7 @@
 body{
     font-family: 'Roboto', sans-serif;
+    background: #151515;
+    color: #E0E0E0;
   }
 #main{
     display: flex;
@@ -12,6 +14,14 @@ body{
     display: flex;
     justify-content: center;
 }
+.support-details{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid #e0e0e0;
+    padding: 1rem;
+}
+
 .step{
 
 }
