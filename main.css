@@ -21,7 +21,24 @@ body{
     border: 1px solid #e0e0e0;
     padding: 1rem;
 }
-
+.wrap-bsc-address{
+    width: 384px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.wrap-lamden-address{
+    width: 384px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.wrap-priv-key{
+    width: 384px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
 .step{
 
 }
